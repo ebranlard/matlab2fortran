@@ -8,7 +8,7 @@
 % Author:Emmanuel Branlard
 % Creation Date  : December 2012
 % Version: 13.01   (year.month)
-% Git-revision: 
+% Git-revision: 37ce392
 % 
 % Web-Site: http://emmanuel.branlard.free.fr/work/programming/
 % License: None. Thank you for sharing your improvements to me by email.

@@ -11,6 +11,7 @@ prog=matlab2fortran
 # dir="matlab2fortran"$mydate"_pack"
 # dir2="matlab2fortran"$mydate
 version=$1
+revnum=`git rev-parse --short HEAD`
 dir=release/$prog-v$version
 dir2=release/$prog-v$version-pack
 mkdir -p $dir
@@ -20,9 +21,7 @@ mkdir -p $dir2
 cp README.txt $dir/
 sed -i 's/^/% /g' $dir/README.txt
 sed -i 's/VERSIONNUMBER/'$version'/g' $dir/README.txt
-REV = `git rev-parse --short HEAD`
-sed -i 's/GITREVISION/'$REV'/g' $dir/README.txt
-
+sed -i 's/GITREVISION/'$revnum'/g' $dir/README.txt
 
 # making one single mat file..
 cat $dir/README.txt dev/$prog.m dev/f*.m > $dir/$prog.m
