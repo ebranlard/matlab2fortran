@@ -1,0 +1,51 @@
+#!/bin/bash
+# usage ./makerelease VERSIONNUMBER
+#
+# description: Bundles/cat all .m files into one single m file called matlab2fortran
+#
+# example ./makerelease 12.12c
+
+
+prog=matlab2fortran
+# mydate=$(date +%Y-%m-%d-%H%M);
+# dir="matlab2fortran"$mydate"_pack"
+# dir2="matlab2fortran"$mydate
+version=$1
+dir=release/$prog-v$version
+dir2=release/$prog-v$version-pack
+mkdir -p $dir
+mkdir -p $dir2
+
+# Preparing the doc
+cp README.txt $dir/
+sed -i 's/^/% /g' $dir/README.txt
+sed -i 's/VERSIONNUMBER/'$version'/g' $dir/README.txt
+REV = `git rev-parse --short HEAD`
+sed -i 's/GITREVISION/'$REV'/g' $dir/README.txt
+
+
+# making one single mat file..
+cat $dir/README.txt dev/$prog.m dev/f*.m > $dir/$prog.m
+rm $dir/README.txt
+
+# making an archive of the separated m files
+# tar -czhf $dir.tar.gz $dir
+cp dev/*.m $dir2/
+zip -r $dir2.zip $dir2
+rm -r $dir2
+
+# 
+cp $dir/$prog.m $dir/$prog"_all.m"
+
+# running tests
+cd $dir
+echo "matlab2fortran('matlab2fortran.m');quit;" | octave --traditional 
+mv matlab2fortran.f90 matlab2fortran_octave.f90
+echo "matlab2fortran('matlab2fortran.m');quit;"|/opt/Matlab/R2010b/bin/matlab -nojvm
+mv matlab2fortran.f90 matlab2fortran_matlab.f90
+
+diff -y --suppress-common-lines --report-identical-files matlab2fortran_octave.f90 matlab2fortran_matlab.f90
+
+mkdir tests
+mv matlab2fortran_* tests
+
