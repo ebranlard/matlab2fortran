@@ -8,7 +8,7 @@
 * Creation Date  : December 2012
 * Version: VERSIONNUMBER 
 * Web-Sites: 
-    - http://github.com/elamnuelito/matlab2fortran
+    - http://github.com/elmanuelito/matlab2fortran
     - http://emmanuel.branlard.free.fr/work/programming/
 * License: None. Thank you for sharing your improvements to me by email.
 
