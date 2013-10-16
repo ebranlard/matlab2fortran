@@ -1,18 +1,16 @@
 # DOCUMENTATION : matlab2fortran
 
-Brief description:
-matlab2fortran(matlab-to-fortran) : converting matlab code to fortran
-Usage: matlab2fortran(filename);
+## Brief description:
 
-
-Author:Emmanuel Branlard
-Creation Date  : December 2012
-Version: VERSIONNUMBER 
-
-Web-Site: 
-    http://github.com/elamnuelito/matlab2fortran
-    http://emmanuel.branlard.free.fr/work/programming/
-License: None. Thank you for sharing your improvements to me by email.
+* matlab2fortran(matlab-to-fortran) : converting matlab code to fortran
+* Usage: matlab2fortran(filename);
+* Author:Emmanuel Branlard
+* Creation Date  : December 2012
+* Version: 1.0-12-gbdc051c 
+* Web-Sites: 
+    - http://github.com/elamnuelito/matlab2fortran
+    - http://emmanuel.branlard.free.fr/work/programming/
+* License: None. Thank you for sharing your improvements to me by email.
 
 
 ## DESCRIPTION
@@ -36,12 +34,13 @@ The script has been tested on matlab and octave.
 
 ## REVISIONS
 
-14/12/12 : first release
+* 14/12/12 : first release
 
-15/12/12 : added declaration of variables at beginning of script or subroutines
+* 15/12/12 : added declaration of variables at beginning of script or subroutines
          added handling of intent(inout), 
          corrected small bug for do loops and number of ":" since they can be in length(a(:,1)) 
-18/12/12 :
+
+* 18/12/12 :
         - Get the function arguments do the decl_stack
         - Handling of [] for array constructor and string concanenation
         - support for transpose ' 
@@ -49,7 +48,7 @@ The script has been tested on matlab and octave.
         - when removing duplicates from the stack, don't loose data
         - Solved Bug for parenthesis in case like: if (a) && b which needs to give ((a) .and. b)
                      
-
+* 16/10/13 : From now on, revisions will only be listed vith git commits
 
 
 
