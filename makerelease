@@ -10,18 +10,18 @@ prog=matlab2fortran
 version=`git describe`
 
 # Preparing the doc
-cp /dec/README.TEMPLATE README
+cp dev/README.TEMPLATE README
 sed -i 's/^/% /g' README
-sed -i 's/VERSIONNUMBER/'$version'/g' $dir/README
+sed -i 's/VERSIONNUMBER/'$version'/g' README
 
 # making one single mat file..
 cat README dev/$prog.m dev/f*.m > $prog.m
 
 # running tests
-echo "matlab2fortran('matlab2fortran.m');quit;" | octave --traditional 
-mv matlab2fortran.f90 matlab2fortran_octave.f90
-echo "matlab2fortran('matlab2fortran.m');quit;"|matlab -nojvm
-mv matlab2fortran.f90 matlab2fortran_matlab.f90
-diff -y --suppress-common-lines --report-identical-files matlab2fortran_octave.f90 matlab2fortran_matlab.f90
-mv matlab2fortran_* tests
-
+# echo "matlab2fortran('matlab2fortran.m');quit;" | octave --traditional 
+# mv matlab2fortran.f90 matlab2fortran_octave.f90
+# echo "matlab2fortran('matlab2fortran.m');quit;"|matlab -nojvm
+# mv matlab2fortran.f90 matlab2fortran_matlab.f90
+# diff -y --suppress-common-lines --report-identical-files matlab2fortran_octave.f90 matlab2fortran_matlab.f90
+# mv matlab2fortran_* tests
+# 
