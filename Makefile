@@ -2,13 +2,12 @@
 VERSION = $(shell git describe)
 PROG=matlab2fortran
 
-
-all: release test
+all: release upload test
 
 
 
 release:
-	@echo "Making release"
+	@echo "--- Making release"
 	# Preparing the doc
 	@cp dev/README.md README.md
 	@sed -i 's/VERSIONNUMBER/'$(VERSION)'/g' README.md
@@ -16,10 +15,17 @@ release:
 	# making one single mat file..
 	@cat README_TMP dev/$(PROG).m dev/f*.m > $(PROG).m
 	@rm README_TMP
+	# git commit
+	git commit -am "New version $(VERSION)"
 	# done
 
+upload:
+	@echo "--- Uploading to server"
+	@./upload.sh
+
+
 test:
-	@echo "Making tests"
+	@echo "--- Making tests"
 	# running tests
 	@echo "matlab2fortran('matlab2fortran.m');quit;" | octave --traditional 
 	@mv matlab2fortran.f90 matlab2fortran_octave.f90
