@@ -27,7 +27,7 @@ if ~isempty(varprop)|| ~isempty(varshape)
 end
 
 % varcomment=[v.comment '     !> '];
-varcomment=[' !> ' v.comment(1:min(20,length(v.comment)))];
+varcomment=[' !< ' v.comment(1:min(20,length(v.comment)))];
 
 
 sf=sprintf('%s%s%s :: %s %s \n',vartype,varshape,varprop,varname,varcomment);
