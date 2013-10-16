@@ -6,7 +6,7 @@
 % * Usage: matlab2fortran(filename);
 % * Author:Emmanuel Branlard
 % * Creation Date  : December 2012
-% * Version: 1.0-15-g6c914e4 
+% * Version: 1.0-16-g9d57803 
 % * Web-Sites: 
 %     - http://github.com/elmanuelito/matlab2fortran
 %     - http://emmanuel.branlard.free.fr/work/programming/

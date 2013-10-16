@@ -2,7 +2,7 @@
 VERSION = $(shell git describe)
 PROG=matlab2fortran
 
-all: release upload test
+all: release upload reference
 
 
 
