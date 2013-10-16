@@ -10,8 +10,8 @@ prog=matlab2fortran
 version=`git describe`
 
 # Preparing the doc
-cp dev/README.md README
-sed 's/^/\% /g' README | cat >README_TMP
+cp dev/README.md README.md
+sed 's/^/\% /g' README.md | cat >README_TMP
 
 # making one single mat file..
 cat README_TMP dev/$prog.m dev/f*.m > $prog.m
