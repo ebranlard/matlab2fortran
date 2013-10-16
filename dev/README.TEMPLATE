@@ -7,10 +7,11 @@ Usage: matlab2fortran(filename);
 
 Author:Emmanuel Branlard
 Creation Date  : December 2012
-Version: VERSIONNUMBER   (year.month)
-Git-revision: GITREVISION
+Version: VERSIONNUMBER 
 
-Web-Site: http://emmanuel.branlard.free.fr/work/programming/
+Web-Site: 
+    http://github.com/elamnuelito/matlab2fortran
+    http://emmanuel.branlard.free.fr/work/programming/
 License: None. Thank you for sharing your improvements to me by email.
 
 
@@ -74,10 +75,12 @@ Main Features of matlab2fortran:
 - Provides Doxygen compatible comments for subroutine and arguments
 
 TODOs:
+- easy: replace also & and | after && and ||
 - better printf handling
 - better handling of function calls and nested function calls..
 - inline ifs?
 - isequal
+
 
 Features that are not intented to be supported
 - Ready-to-compile output and perfection...

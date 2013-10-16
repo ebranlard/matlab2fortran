@@ -215,7 +215,7 @@ if length(s)~=length(sold) % we did replace something
 end
 
 % for replace
-I=strfind(s,'for');
+I=strfind(s,'for ');
 if ~isempty(I) && I(1)==1
     [ sf end_stack] = freplacefor( s , end_stack );
     return;
