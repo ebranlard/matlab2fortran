@@ -2,7 +2,10 @@
 VERSION = $(shell git describe)
 PROG=matlab2fortran
 
-all: release upload reference
+all: deploy
+	
+
+deploy:release git upload reference
 
 
 
@@ -15,10 +18,12 @@ release:
 	# making one single mat file..
 	@cat README_TMP dev/$(PROG).m dev/f*.m > $(PROG).m
 	@rm README_TMP
-	# git commit
-	git commit -am "New version $(VERSION)"
 	# done
 
+git:
+	# git commit
+	@git commit -am "New version $(VERSION)"
+	@git push
 upload:
 	@echo "--- Uploading to server"
 	@./upload.sh
