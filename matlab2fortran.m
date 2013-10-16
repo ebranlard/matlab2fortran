@@ -7,7 +7,7 @@
 % 
 % Author:Emmanuel Branlard
 % Creation Date  : December 2012
-% Version: 1.0-3-g89f13cc 
+% Version: VERSIONNUMBER 
 % 
 % Web-Site: 
 %     http://github.com/elamnuelito/matlab2fortran

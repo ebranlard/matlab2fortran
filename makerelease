@@ -11,11 +11,11 @@ version=`git describe`
 
 # Preparing the doc
 cp dev/README.TEMPLATE README
-sed -i 's/^/% /g' README
-sed -i 's/VERSIONNUMBER/'$version'/g' README
+sed 's/^/\% /g' README | cat >README_TMP
 
 # making one single mat file..
-cat README dev/$prog.m dev/f*.m > $prog.m
+cat README_TMP dev/$prog.m dev/f*.m > $prog.m
+rm README_TMP
 
 # running tests
 echo "matlab2fortran('matlab2fortran.m');quit;" | octave --traditional 
