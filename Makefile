@@ -1,5 +1,6 @@
 
 VERSION = $(shell git describe)
+REVDATE = $(shell git show -s --format="%ci"|awk '{print $$1}')
 PROG=matlab2fortran
 
 all: deploy
@@ -8,14 +9,15 @@ all: deploy
 deploy:release git upload reference
 
 
-
 release:
 	@echo "--- Making release"
+	@echo "$(REVDATE)"
 	# Preparing the doc
 	@cp dev/README.md README.md
 	@sed -i 's/VERSIONNUMBER/'$(VERSION)'/g' README.md
+	sed -i 's/LASTREVISION/'$(REVDATE)'/g' README.md
 	@sed 's/^/\% /g' README.md | cat >README_TMP
-	# making one single mat file..
+	# packing in a single matlab file..
 	@cat README_TMP dev/$(PROG).m dev/f*.m > $(PROG).m
 	@rm README_TMP
 	# done

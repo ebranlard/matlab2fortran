@@ -4,9 +4,10 @@
 % 
 % * matlab2fortran(matlab-to-fortran) : converting matlab code to fortran
 % * Usage: matlab2fortran(filename);
-% * Author:Emmanuel Branlard
+% * Author:Emmanuel Branlard (contributors are welcome)
 % * Creation Date  : December 2012
-% * Version: 1.0-17-g44201fe 
+% * Last revision  : 2013-10-16
+% * Version: 1.0-18-g1c9c30b 
 % * Web-Sites: 
 %     - http://github.com/elmanuelito/matlab2fortran
 %     - http://emmanuel.branlard.free.fr/work/programming/
