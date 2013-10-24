@@ -7,7 +7,7 @@
 % * Author:Emmanuel Branlard (contributors are welcome)
 % * Creation Date  : December 2012
 % * Last revision  : 2013-10-24
-% * Version: 1.0-20-g7ecb58f 
+% * Version: 1.0-23-g25f33bb 
 % * Web-Sites: 
 %     - http://github.com/elmanuelito/matlab2fortran
 %     - http://emmanuel.branlard.free.fr/work/programming/
@@ -379,7 +379,7 @@ end
 s=regexprep(s,'(?<!!.*)\.\.\.','&'); % this line requires some explanation below
 % If uses a negative lookbehind "(?<!)" It looks if there is no !.* before (ie, no comment)
 % If this is not a commen then we replace the ... by &. This regexp will not work with octave, but it doesnt matter since it's a comment.
-% Octabe will replace by & all the time
+% Octave will replace by & all the time
 % If one want, & can be replace by \& so that matlab will not recognize this bad escpae character and hence will merge the current line with the next.. but that's a HACK
 
 
@@ -1141,6 +1141,9 @@ if ~isempty(ieq)
         decl_stack=fstack_push(decl_stack,v);
     end
 
+else
+    % we give up for now, no conversion done
+    sf=s;
 end
 
 end %function
