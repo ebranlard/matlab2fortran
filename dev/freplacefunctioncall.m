@@ -50,6 +50,9 @@ if ~isempty(ieq)
         decl_stack=fstack_push(decl_stack,v);
     end
 
+else
+    % we give up for now, no conversion done
+    sf=s;
 end
 
 end %function

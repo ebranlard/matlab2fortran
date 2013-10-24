@@ -262,7 +262,7 @@ end
 s=regexprep(s,'(?<!!.*)\.\.\.','&'); % this line requires some explanation below
 % If uses a negative lookbehind "(?<!)" It looks if there is no !.* before (ie, no comment)
 % If this is not a commen then we replace the ... by &. This regexp will not work with octave, but it doesnt matter since it's a comment.
-% Octabe will replace by & all the time
+% Octave will replace by & all the time
 % If one want, & can be replace by \& so that matlab will not recognize this bad escpae character and hence will merge the current line with the next.. but that's a HACK
 
 
