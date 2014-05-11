@@ -76,12 +76,18 @@ The script has been tested on matlab and octave.
 - Provides Doxygen compatible comments for subroutine and arguments
 
 ### TODOs:
-
 - easy: replace also & and | after && and ||
 - better printf handling
 - better handling of function calls and nested function calls..
 - inline ifs?
 - isequal
+
+Requests:
+- In “do while” construct, it does not put the logical expression in brackets.
+- It does not convert “pi” to a real parameter having the value of 3.1415…
+- It does not detect some of Matlab’s intrinsic functions (e.g., mean, std, nnz). It considers them as variables.
+- It does not convert some intrinsic functions such as “fopen”.
+- It considers the variables in array bounds subscript (e.g., t in M(s,t)) real, while they are integers.
 
 
 ### Features that are not intented to be supported
