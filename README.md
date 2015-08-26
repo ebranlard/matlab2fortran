@@ -7,7 +7,7 @@
 * Author:Emmanuel Branlard (contributors are welcome)
 * Creation Date  : December 2012
 * Last revision  : 2015-08-26
-* Version: 1.0-28-g49fdead 
+* Version: 1.0-29-g83df194 
 * Web-Sites: 
     - http://github.com/elmanuelito/matlab2fortran
     - http://emmanuel.branlard.free.fr/work/programming/

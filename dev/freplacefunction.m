@@ -78,7 +78,7 @@ end
 sf=['!> \n'];
 sf=[sf 'subroutine ' fname '(' s_args  ')\n'];
 sf=[sf 'implicit none \n'];
-sf=[sf '! Use somemodule \n'];
+% sf=[sf '! Use somemodule \n'];
 if ~isempty(c_all_args)
 %     sf=[sf '! Input/output arguments \n'];
     for iarg=1:length(c_all_args(:,1))
