@@ -1,10 +1,15 @@
 function [  ] = matlab2fortran( varargin )
 
 %% Parameters
+global DOUBLE_KIND DOUBLE_KIND_SUFFIX;
+
 bDebug=0;% show input in stdout
 bPipe=0; % pipe output to stdout as well as in the file
 bSortDeclarationbyNames=1; %
 bSortDeclarationbyTypes=0; %
+
+DOUBLE_KIND='MK'; DOUBLE_KIND_SUFFIX='_MK';
+% DOUBLE_KIND='8'; DOUBLE_KIND_SUFFIX='D0';
 
 %%
 if nargin==0

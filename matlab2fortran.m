@@ -7,7 +7,7 @@
 % * Author:Emmanuel Branlard (contributors are welcome)
 % * Creation Date  : December 2012
 % * Last revision  : 2014-05-11
-% * Version: 1.0-25-g50f3d4e 
+% * Version: 1.0-26-gbcba92b 
 % * Web-Sites: 
 %     - http://github.com/elmanuelito/matlab2fortran
 %     - http://emmanuel.branlard.free.fr/work/programming/
@@ -124,10 +124,15 @@
 function [  ] = matlab2fortran( varargin )
 
 %% Parameters
+global DOUBLE_KIND DOUBLE_KIND_SUFFIX;
+
 bDebug=0;% show input in stdout
 bPipe=0; % pipe output to stdout as well as in the file
 bSortDeclarationbyNames=1; %
 bSortDeclarationbyTypes=0; %
+
+DOUBLE_KIND='MK'; DOUBLE_KIND_SUFFIX='_MK';
+% DOUBLE_KIND='8'; DOUBLE_KIND_SUFFIX='D0';
 
 %%
 if nargin==0
@@ -718,8 +723,9 @@ b=found;
 
 end
 function [ sf ] = fgetDeclaration( v )
+global DOUBLE_KIND
 if isempty(v.type)
-    vartype='real*8';
+    vartype=sprintf('real(%s)',DOUBLE_KIND);
 else
     vartype=v.type;
 end
@@ -754,6 +760,7 @@ sf=sprintf('%s%s%s :: %s %s \n',vartype,varshape,varprop,varname,varcomment);
 end
 
 function [ vartype, varshape,varprop ] = fgetVarTypeFromName( varname )
+global DOUBLE_KIND;
 % default type
 vartype='';
 varshape='';
@@ -771,7 +778,7 @@ elseif varname(1)=='s'
 elseif length(varname)>=3 & isequal(varname(1:3),'cpt')
     vartype='integer';
 elseif varname(1)=='v'
-    vartype='real*8';
+    vartype=sprintf('real(%s)',DOUBLE_KIND);
     varshape=':';
 else
     vartype=''; % this is postponed to the writting
@@ -1343,6 +1350,7 @@ end_stack=fstack_push(end_stack,'do');
 end
 
 function [ sf,decl_stack] = freplacezeros( s, decl_stack)
+    global DOUBLE_KIND_SUFFIX  DOUBLE_KIND
 
 % freplacezeros('aaa zeros(1,10) ; ones(size(1)) !sdkjskf')
 
@@ -1378,7 +1386,7 @@ Ieq=strfind(s,'=');
 % default value
 % if value>=0
 sf= ['allocate(TODO(' s_size ')) \n'];
-sf= sprintf('%sTODO = %d.0D0 \n',sf,value);
+sf= sprintf('%sTODO = %d.0%s \n',sf,value,DOUBLE_KIND_SUFFIX);
 % else
 % a = 1.5 ! Initial value
 % y = (/((i*a),i=1,100)/) ! m2f: kind of linspace
@@ -1412,7 +1420,7 @@ if ~isempty(Ieq)
         s_shape=[s_shape,',:'];
     end
     varname=strtrim(varname);
-    v.type='real*8'; 
+    v.type=sprintf('real(%s)',DOUBLE_KIND); 
     v.name=strtrim(varname);
     v.shape=s_shape;
     v.prop='';
@@ -1422,7 +1430,7 @@ if ~isempty(Ieq)
 
     sf= [sf 'if (allocated(' varname ')) deallocate(' varname ')\n'];
     sf= [sf 'allocate(' varname '(' s_size '))\n'];
-    sf= sprintf('%s%s = %d.0D0 \n',sf,varname,value);
+    sf= sprintf('%s%s = %d.0%s \n',sf,varname,value,DOUBLE_KIND_SUFFIX);
     
     posttrim=strtrim(post);
     if isempty(strtrim(pre)) && (isempty(posttrim) || posttrim(1)=='!')

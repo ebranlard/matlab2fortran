@@ -1,6 +1,7 @@
 function [ sf ] = fgetDeclaration( v )
+global DOUBLE_KIND
 if isempty(v.type)
-    vartype='real*8';
+    vartype=sprintf('real(%s)',DOUBLE_KIND);
 else
     vartype=v.type;
 end

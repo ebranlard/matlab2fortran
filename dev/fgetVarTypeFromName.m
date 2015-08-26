@@ -1,4 +1,5 @@
 function [ vartype, varshape,varprop ] = fgetVarTypeFromName( varname )
+global DOUBLE_KIND;
 % default type
 vartype='';
 varshape='';
@@ -16,7 +17,7 @@ elseif varname(1)=='s'
 elseif length(varname)>=3 & isequal(varname(1:3),'cpt')
     vartype='integer';
 elseif varname(1)=='v'
-    vartype='real*8';
+    vartype=sprintf('real(%s)',DOUBLE_KIND);
     varshape=':';
 else
     vartype=''; % this is postponed to the writting

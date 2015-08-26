@@ -1,4 +1,5 @@
 function [ sf,decl_stack] = freplacezeros( s, decl_stack)
+    global DOUBLE_KIND_SUFFIX  DOUBLE_KIND
 
 % freplacezeros('aaa zeros(1,10) ; ones(size(1)) !sdkjskf')
 
@@ -34,7 +35,7 @@ Ieq=strfind(s,'=');
 % default value
 % if value>=0
 sf= ['allocate(TODO(' s_size ')) \n'];
-sf= sprintf('%sTODO = %d.0D0 \n',sf,value);
+sf= sprintf('%sTODO = %d.0%s \n',sf,value,DOUBLE_KIND_SUFFIX);
 % else
 % a = 1.5 ! Initial value
 % y = (/((i*a),i=1,100)/) ! m2f: kind of linspace
@@ -68,7 +69,7 @@ if ~isempty(Ieq)
         s_shape=[s_shape,',:'];
     end
     varname=strtrim(varname);
-    v.type='real*8'; 
+    v.type=sprintf('real(%s)',DOUBLE_KIND); 
     v.name=strtrim(varname);
     v.shape=s_shape;
     v.prop='';
@@ -78,7 +79,7 @@ if ~isempty(Ieq)
 
     sf= [sf 'if (allocated(' varname ')) deallocate(' varname ')\n'];
     sf= [sf 'allocate(' varname '(' s_size '))\n'];
-    sf= sprintf('%s%s = %d.0D0 \n',sf,varname,value);
+    sf= sprintf('%s%s = %d.0%s \n',sf,varname,value,DOUBLE_KIND_SUFFIX);
     
     posttrim=strtrim(post);
     if isempty(strtrim(pre)) && (isempty(posttrim) || posttrim(1)=='!')
