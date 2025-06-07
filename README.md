@@ -3,7 +3,7 @@
 
 ## Brief description:
 
-* matlab2fortran(matlab-to-fortran) : converting matlab code to fortran
+* matlab2fortran(matlab-to-fortran) : converting matlab code to fortran (transpiler)
 * Usage: matlab2fortran(filename);
 * Author:Emmanuel Branlard (contributors are welcome)
 * Creation Date  : December 2012
@@ -17,7 +17,7 @@
 
 ## DESCRIPTION
 
-matlab2fortran(matlab-to-fortran) is a code that performs an automatic conversion of one or multiple matlab files to fortran format. The script translate some of the main features of matlab to fortran. matlab2fortran performs a quick and dirty conversion on a line-by-line basis (but still supports conditional loops, subroutine). The script allows multiple matlab command per line if these commands are separated by ";", but not by ",".
+matlab2fortran(matlab-to-fortran) performs automatic conversion (transpiling) of one or multiple matlab files to fortran format. The script translate some of the main features of matlab to fortran. matlab2fortran performs a quick and dirty conversion on a line-by-line basis (but still supports conditional loops, subroutine). The script allows multiple matlab command per line if these commands are separated by ";", but not by ",".
 
 matlab2fortran does not intend to produce ready-to-compile code, but performs several necessary conversions. The generated code keeps the structure, variables names and comments of the original code. 
 
